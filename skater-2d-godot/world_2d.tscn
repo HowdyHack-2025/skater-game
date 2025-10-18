@@ -54,9 +54,6 @@ size = Vector2(12, 12)
 
 [node name="World2D" type="Node2D"]
 
-[node name="MainCamera" type="Camera2D" parent="."]
-zoom = Vector2(4.13, 4.13)
-
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD6/wEAAAAAAAAAAAD6/wIAAAAAAAEAAAD6/wMAAAAAAAIAAAD7/wEAAAABAAAAAAD7/wIAAAABAAEAAAD7/wMAAAABAAIAAAD8/wEAAAABAAAAAAD8/wIAAAABAAEAAAD8/wMAAAABAAIAAAD9/wEAAAABAAAAAAD9/wIAAAABAAEAAAD9/wMAAAABAAIAAAD+/wEAAAABAAAAAAD+/wIAAAABAAEAAAD+/wMAAAABAAIAAAD//wEAAAABAAAAAAD//wIAAAABAAEAAAD//wMAAAABAAIAAAAAAAEAAAABAAAAAAAAAAIAAAABAAEAAAAAAAMAAAABAAIAAAABAAEAAAABAAAAAAABAAIAAAABAAEAAAABAAMAAAABAAIAAAACAAEAAAABAAAAAAACAAIAAAABAAEAAAACAAMAAAABAAIAAAADAAEAAAABAAAAAAADAAIAAAABAAEAAAADAAMAAAABAAIAAAAEAAEAAAABAAAAAAAEAAIAAAABAAEAAAAEAAMAAAABAAIAAAAFAAEAAAACAAAAAAAFAAIAAAACAAEAAAAFAAMAAAACAAIAAAAGAAIAAAAEAAEAAAAHAAIAAAAFAAEAAAAIAAIAAAABAAAAAAAJAAIAAAABAAAAAAAKAAIAAAAGAAEAAAAKAAEAAAAGAAAAAAALAAEAAAAHAAAAAAALAAIAAAAHAAEAAAAGAAEAAAAEAAAAAAAHAAEAAAAFAAAAAAA=")
 tile_set = SubResource("TileSet_hmjmd")
@@ -64,9 +61,13 @@ tile_set = SubResource("TileSet_hmjmd")
 [node name="SkaterPlayer" parent="." instance=ExtResource("2_laysq")]
 position = Vector2(-2, -9)
 
+[node name="MainCamera" type="Camera2D" parent="SkaterPlayer"]
+zoom = Vector2(4.13, 4.13)
+position_smoothing_enabled = true
+
 [node name="Collisions" type="Node2D" parent="."]
 
-[node name="Rectangle" type="Area2D" parent="Collisions"]
+[node name="Rectangle" type="StaticBody2D" parent="Collisions"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Rectangle"]
 position = Vector2(0, 30)
