@@ -14,10 +14,15 @@ config/name="skater-2d-godot"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Constants="*res://autoload/constants.gd"
+
 [file_customization]
 
 folder_colors={
 "res://assets/": "orange",
+"res://autoload/": "purple",
 "res://stage_pieces/": "green"
 }
 
