@@ -7,4 +7,4 @@ func _on_area_entered(area: Area2D) -> void:
 	print("ENTERED")
 	var instance = slope.instantiate()
 	instance.position = get_global_mouse_position()
-	add_child(instance)
+	add_child.call_deferred(instance)

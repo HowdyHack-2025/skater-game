@@ -77,7 +77,7 @@ shape = SubResource("RectangleShape2D_laysq")
 position = Vector2(72, 12)
 
 [node name="Obstacle" type="StaticBody2D" parent="Collisions"]
-position = Vector2(114, 18)
+position = Vector2(153, 103)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Obstacle"]
 shape = SubResource("RectangleShape2D_u2nsr")
