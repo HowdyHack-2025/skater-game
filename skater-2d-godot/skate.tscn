@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdqchoggxhjij"]
+
+[ext_resource type="ArrayMesh" uid="uid://i4nv16j8l6ce" path="res://assets/3d/Skate.obj" id="1_84sbm"]
+
+[node name="Skate" type="MeshInstance3D"]
+mesh = ExtResource("1_84sbm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
