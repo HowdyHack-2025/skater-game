@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0fvb6gfwd3ii"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmjmd"]
+size = Vector2(24, 2)
+
+[node name="SmallSlope" type="StaticBody2D"]
+
+[node name="Slope30D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-24, -6)
+scale = Vector2(0.46630844, 0.23437501)
+polygon = PackedVector2Array(-25.73404, -25.599998, -25.73404, 25.599998, 25.73404, 25.599998)
+
+[node name="Slope30U" type="CollisionPolygon2D" parent="."]
+position = Vector2(24, -6)
+scale = Vector2(0.46630844, 0.23437501)
+polygon = PackedVector2Array(25.73404, -25.599998, -25.73404, 25.599998, 25.73404, 25.599998)
+
+[node name="Flat" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_hmjmd")
+
+[node name="EndMarker" type="Marker2D" parent="."]
+position = Vector2(36, -12)
