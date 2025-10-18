@@ -1,8 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbhjkg5kjws57"]
+[gd_scene load_steps=5 format=3 uid="uid://cbhjkg5kjws57"]
 
-[ext_resource type="Script" uid="uid://bqc8x3d2yrpoc" path="res://skater_player.gd" id="1_3xnyc"]
+[ext_resource type="Script" uid="uid://c1gxk1nwk71x8" path="res://skater_player.gd" id="1_3xnyc"]
 [ext_resource type="Texture2D" uid="uid://c8g40ehgcjuhf" path="res://assets/skater_placeholder.png" id="1_ug1ln"]
 
-[node name="SkaterPlayer" type="Sprite2D"]
-texture = ExtResource("1_ug1ln")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ug1ln"]
+size = Vector2(11, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kb5fk"]
+size = Vector2(7, 10)
+
+[node name="SkaterPlayer" type="CharacterBody2D"]
 script = ExtResource("1_3xnyc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("1_ug1ln")
+
+[node name="SkateboardCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_ug1ln")
+
+[node name="PlayerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(-0.5, -7)
+shape = SubResource("RectangleShape2D_kb5fk")
