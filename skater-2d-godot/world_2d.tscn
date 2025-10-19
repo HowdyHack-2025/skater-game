@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkra1ub3o0xua"]
+[gd_scene load_steps=7 format=3 uid="uid://bkra1ub3o0xua"]
 
 [ext_resource type="Script" uid="uid://nrohe4rqb3q" path="res://world_2d.gd" id="1_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://cbhjkg5kjws57" path="res://skater_player.tscn" id="2_laysq"]
+[ext_resource type="Texture2D" uid="uid://dqxsajt8rfxsd" path="res://assets/2d/imported/GandalfHardcore City Tiles/City background.png" id="2_u2nsr"]
 [ext_resource type="PackedScene" uid="uid://cj2oe0m4q44bu" path="res://stage_pieces/beginning.tscn" id="3_hmjmd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2nsr"]
@@ -13,9 +14,17 @@ size = Vector2(12, 20)
 [node name="World2D" type="Node2D"]
 script = ExtResource("1_y4oe8")
 
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(-129, -19)
+
+[node name="CityBackground" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(-2.000001, 4.0000005)
+scale = Vector2(1.7283236, 1.7283236)
+texture = ExtResource("2_u2nsr")
+
 [node name="SkaterPlayer" parent="." instance=ExtResource("2_laysq")]
 position = Vector2(-129, 1)
-max_speed = null
 
 [node name="Collisions" type="Node2D" parent="."]
 
