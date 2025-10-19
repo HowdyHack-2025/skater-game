@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="skater-2d-godot"
-run/main_scene="uid://bfgjsm7bn753c"
+run/main_scene="uid://bkra1ub3o0xua"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

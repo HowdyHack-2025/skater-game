@@ -15,7 +15,7 @@ var flipping: bool = false
 
 const COYOTE_TIME = 0.2  # seconds
 var coyote_timer: float = 0.0
-@export var auto = false
+
 var beginning_degree
 var player_degree = 0
 var ending_degree = 1.5*PI
@@ -52,8 +52,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var is_grounded := is_on_floor()
-	if auto:
-		Input.action_press("go_2")
+	
 	# Coyote time logic
 	if is_grounded:
 		if stored_boost:
