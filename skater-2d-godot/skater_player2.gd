@@ -135,7 +135,8 @@ func _physics_process(delta: float) -> void:
 		rotation = rotate_toward(rotation, surface_normal.x, 0.5)
 	if self.position.x >= 10000 and SignalBus.winned == false:
 		SignalBus.winned = true
-		SignalBus.p1win.emit()
+		find_child("Confetti").visible = true
+		SignalBus.p2win.emit("P2")
 	move_and_slide()
 	last_degree = rotation
 	# rotation = rotate_toward(rotation, get_floor_angle(), 0.5)

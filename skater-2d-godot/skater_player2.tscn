@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://daqf1l1d53afm"]
+[gd_scene load_steps=12 format=3 uid="uid://daqf1l1d53afm"]
 
 [ext_resource type="Script" uid="uid://ixpmp5uturqn" path="res://skater_player2.gd" id="1_wste2"]
 [ext_resource type="Texture2D" uid="uid://cdvp6wat1xelg" path="res://assets/2d/skateboard/skaters.png" id="2_wste2"]
+[ext_resource type="PackedScene" uid="uid://by8yy1krbl5gy" path="res://confetti.tscn" id="3_qhx4m"]
 
 [sub_resource type="Animation" id="Animation_kb5fk"]
 length = 0.001
@@ -97,6 +98,8 @@ autoplay = "default"
 [node name="SkateboardCollision2" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_f7n3b")
+
+[node name="Confetti" parent="." instance=ExtResource("3_qhx4m")]
 
 [node name="PlayerArea2" type="Area2D" parent="."]
 
