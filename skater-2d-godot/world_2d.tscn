@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://nrohe4rqb3q" path="res://world_2d.gd" id="1_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://cbhjkg5kjws57" path="res://skater_player.tscn" id="2_laysq"]
-[ext_resource type="Texture2D" uid="uid://dqxsajt8rfxsd" path="res://assets/2d/imported/GandalfHardcore City Tiles/City background.png" id="2_u2nsr"]
 [ext_resource type="PackedScene" uid="uid://cj2oe0m4q44bu" path="res://stage_pieces/beginning.tscn" id="3_hmjmd"]
 [ext_resource type="PackedScene" uid="uid://b82ppyqjrmxkp" path="res://status.tscn" id="4_u2nsr"]
 [ext_resource type="Script" uid="uid://dnq8ii7sc0bv7" path="res://main_camera_2.gd" id="5_y4oe8"]
@@ -51,16 +50,6 @@ normal = Vector2(1, 0)
 
 [node name="World2D" type="Node2D"]
 script = ExtResource("1_y4oe8")
-
-[node name="Parallax2D" type="Parallax2D" parent="."]
-scale = Vector2(1.565, 1.565)
-scroll_scale = Vector2(0.05, 0.05)
-scroll_offset = Vector2(-129, 137)
-
-[node name="CityBackground" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(-2.000001, -533.54626)
-scale = Vector2(5.652034, 5.652034)
-texture = ExtResource("2_u2nsr")
 
 [node name="SkaterPlayer" parent="." instance=ExtResource("2_laysq")]
 position = Vector2(-129, 1)
@@ -137,11 +126,5 @@ animation = &"p2"
 
 [node name="SkaterPlayer2" parent="." instance=ExtResource("6_670s1")]
 position = Vector2(-153, -6)
-
-[node name="Win" type="Area2D" parent="."]
-position = Vector2(128, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
-shape = SubResource("WorldBoundaryShape2D_b5nmj")
 
 [connection signal="area_entered" from="StageMarker" to="." method="_on_area_entered"]
