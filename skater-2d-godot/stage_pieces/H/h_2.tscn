@@ -6,7 +6,6 @@
 
 [node name="GrassTile" parent="." instance=ExtResource("1_aogxe")]
 tile_map_data = PackedByteArray("AAABAP//AQAJAAgAAAAAAP//AQADAAgAAAACAP//AQAPAAgAAAADAP//AQAQAAgAAAAEAP//AQAMAAgAAAAFAP//AQANAAgAAAAGAP//AQAHAAgAAAAHAP//AQABAAgAAAA=")
-collision_visibility_mode = 1
 
 [node name="EndMarker" type="Marker2D" parent="."]
 position = Vector2(256, 0)

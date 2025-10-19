@@ -19,8 +19,9 @@ normal = Vector2(1, 0)
 script = ExtResource("1_y4oe8")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.5, 0.5)
-scroll_offset = Vector2(-129, -19)
+scale = Vector2(1.565, 1.565)
+scroll_scale = Vector2(0.1, 0.1)
+scroll_offset = Vector2(-129, 137)
 
 [node name="CityBackground" type="Sprite2D" parent="Parallax2D"]
 position = Vector2(-2.000001, 4.0000005)
