@@ -136,3 +136,8 @@ func _on_player_area_body_entered(body: Node2D) -> void:
 	
 	if body.name == "Win":
 		print("win")
+
+
+func _on_player_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if area.name == "Win":
+		print("win")
