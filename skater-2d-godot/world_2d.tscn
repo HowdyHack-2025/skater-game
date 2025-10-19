@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bkra1ub3o0xua"]
+[gd_scene load_steps=11 format=3 uid="uid://bkra1ub3o0xua"]
 
 [ext_resource type="Script" uid="uid://nrohe4rqb3q" path="res://world_2d.gd" id="1_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://cbhjkg5kjws57" path="res://skater_player.tscn" id="2_laysq"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b82ppyqjrmxkp" path="res://status.tscn" id="4_u2nsr"]
 [ext_resource type="Script" uid="uid://dnq8ii7sc0bv7" path="res://main_camera_2.gd" id="5_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://daqf1l1d53afm" path="res://skater_player2.tscn" id="6_670s1"]
-[ext_resource type="PackedScene" path="res://status2.tscn" id="7_b5nmj"]
+[ext_resource type="PackedScene" uid="uid://bh1pcv7r5f1q6" path="res://status2.tscn" id="7_b5nmj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2nsr"]
 size = Vector2(12, 12)
@@ -15,9 +15,6 @@ size = Vector2(12, 12)
 size = Vector2(12, 20)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u2nsr"]
-normal = Vector2(1, 0)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5nmj"]
 normal = Vector2(1, 0)
 
 [node name="World2D" type="Node2D"]
@@ -91,11 +88,5 @@ scale = Vector2(0.8, 0.8)
 
 [node name="SkaterPlayer2" parent="." instance=ExtResource("6_670s1")]
 position = Vector2(-153, -6)
-
-[node name="Win" type="Area2D" parent="."]
-position = Vector2(128, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
-shape = SubResource("WorldBoundaryShape2D_b5nmj")
 
 [connection signal="area_entered" from="StageMarker" to="." method="_on_area_entered"]

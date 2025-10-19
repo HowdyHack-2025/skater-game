@@ -126,6 +126,9 @@ func _physics_process(delta: float) -> void:
 		ACCELERATION = 50
 
 	move_and_slide()
+	if self.position.x >= 10000 and SignalBus.winned == false:
+		SignalBus.winned = true
+		SignalBus.p1win.emit()
 	last_degree = rotation
 	# rotation = rotate_toward(rotation, get_floor_angle(), 0.5)
 
@@ -133,11 +136,3 @@ func _on_player_area_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		slowed = true
 		velocity.x = 0
-	
-	if body.name == "Win":
-		print("win")
-
-
-func _on_player_area_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if area.name == "Win":
-		print("win")

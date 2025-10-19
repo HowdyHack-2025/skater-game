@@ -2,6 +2,9 @@ extends Node
 
 signal status_update(status: String)
 signal status_update2(status: String)
+signal p1win
+signal p2win
+var winned = false
 
 var camera_position: Vector2
 @onready var progress: ProgressBar = get_tree().current_scene.find_child("ProgressBar")
