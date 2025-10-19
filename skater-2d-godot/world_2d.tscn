@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkra1ub3o0xua"]
+[gd_scene load_steps=9 format=3 uid="uid://bkra1ub3o0xua"]
 
 [ext_resource type="Script" uid="uid://nrohe4rqb3q" path="res://world_2d.gd" id="1_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://cbhjkg5kjws57" path="res://skater_player.tscn" id="2_laysq"]
 [ext_resource type="Texture2D" uid="uid://dqxsajt8rfxsd" path="res://assets/2d/imported/GandalfHardcore City Tiles/City background.png" id="2_u2nsr"]
 [ext_resource type="PackedScene" uid="uid://cj2oe0m4q44bu" path="res://stage_pieces/beginning.tscn" id="3_hmjmd"]
+[ext_resource type="Script" uid="uid://dnq8ii7sc0bv7" path="res://main_camera_2.gd" id="5_y4oe8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2nsr"]
 size = Vector2(12, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4oe8"]
 size = Vector2(12, 20)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u2nsr"]
+normal = Vector2(1, 0)
 
 [node name="World2D" type="Node2D"]
 script = ExtResource("1_y4oe8")
@@ -44,5 +48,19 @@ shape = SubResource("RectangleShape2D_y4oe8")
 
 [node name="Beginning" parent="." instance=ExtResource("3_hmjmd")]
 position = Vector2(-180, 12)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-129, 0)
+zoom = Vector2(5.4, 5.4)
+position_smoothing_enabled = true
+script = ExtResource("5_y4oe8")
+
+[node name="Area2D" type="Area2D" parent="Camera2D"]
+position = Vector2(193, -2)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
+shape = SubResource("WorldBoundaryShape2D_u2nsr")
 
 [connection signal="area_entered" from="StageMarker" to="." method="_on_area_entered"]
