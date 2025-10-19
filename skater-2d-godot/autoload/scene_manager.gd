@@ -3,7 +3,8 @@ extends Node
 var current_scene = null
 
 func _deferred_goto_scene(path):
-	current_scene.free()
+	if current_scene != null:
+		current_scene.free()
 	
 	# Load the new scene.
 	var s = ResourceLoader.load(path)

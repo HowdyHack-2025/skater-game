@@ -8,7 +8,6 @@ var slope: StaticBody2D
 
 
 func _on_area_entered(area: Area2D) -> void:
-	print("hi")
 	var current_instance = ResourceLoader.load(Constants.STAGE_PIECES.values().pick_random()).instantiate()
 	
 	current_instance.position = previous_piece_end_pos
