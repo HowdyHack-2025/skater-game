@@ -16,6 +16,13 @@ var flipping: bool = false
 const COYOTE_TIME = 0.1  # seconds
 var coyote_timer: float = 0.0
 
+var beginning_degree
+var player_degree = 0
+var ending_degree = 1.5*PI
+var last_degree = 0
+
+var flips = 0
+
 # Constants
 const SNAP_LENGTH = 4.0
 const FLOOR_MAX_ANGLE = 45.0  # Max angle to consider a floor
@@ -33,7 +40,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var is_grounded := is_on_floor()
-
+	
 	# Coyote time logic
 	if is_grounded:
 		coyote_timer = COYOTE_TIME  # Reset when grounded
@@ -52,8 +59,13 @@ func _physics_process(delta: float) -> void:
 			flipping = false
 			SignalBus.status_update.emit("none")
 		rotation += flip_d * 0.1
+		player_degree += rotation - last_degree
+		if abs(player_degree) >= ending_degree:
+			player_degree = 0
+			flips += 1
+			print("flip")
 		if coyote_timer <= 0.0:
-			velocity += get_gravity() * delta * 0.5
+			velocity += get_gravity() * delta * 0.25
 	
 	velocity.y = clamp(velocity.y, -MAX_FALL_SPEED, MAX_FALL_SPEED)
 
@@ -76,6 +88,7 @@ func _physics_process(delta: float) -> void:
 		rotation = rotate_toward(rotation, surface_normal.x, 0.5)
 
 	move_and_slide()
+	last_degree = rotation
 	# rotation = rotate_toward(rotation, get_floor_angle(), 0.5)
 
 func _on_player_area_body_entered(body: Node2D) -> void:
