@@ -1,13 +1,40 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbhjkg5kjws57"]
+[gd_scene load_steps=11 format=3 uid="uid://cbhjkg5kjws57"]
 
 [ext_resource type="Script" uid="uid://c1gxk1nwk71x8" path="res://skater_player.gd" id="1_3xnyc"]
-[ext_resource type="Texture2D" uid="uid://c8g40ehgcjuhf" path="res://assets/skater_placeholder.png" id="1_ug1ln"]
+[ext_resource type="Texture2D" uid="uid://cdvp6wat1xelg" path="res://assets/2d/skateboard/skaters.png" id="2_ug1ln"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb5fk"]
+atlas = ExtResource("2_ug1ln")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fgln"]
+atlas = ExtResource("2_ug1ln")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eusyy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb5fk")
+}],
+"loop": false,
+"name": &"boosted",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fgln")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ug1ln"]
-size = Vector2(12, 2)
+size = Vector2(14, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kb5fk"]
-size = Vector2(3, 1.375)
+size = Vector2(4, 3)
 
 [sub_resource type="Animation" id="Animation_kb5fk"]
 length = 0.001
@@ -50,17 +77,19 @@ collision_layer = 2
 floor_max_angle = 1.3089969
 script = ExtResource("1_3xnyc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ug1ln")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.625, 0.625)
+sprite_frames = SubResource("SpriteFrames_eusyy")
+autoplay = "default"
 
 [node name="SkateboardCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_ug1ln")
 
 [node name="PlayerArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
-position = Vector2(0, -3.6875)
+position = Vector2(3, -4)
 shape = SubResource("RectangleShape2D_kb5fk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -69,11 +98,12 @@ libraries = {
 }
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 5)
 target_position = Vector2(0, 11)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="area_shape_entered" from="PlayerArea" to="." method="_on_player_area_area_shape_entered"]
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_player_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

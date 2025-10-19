@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b82ppyqjrmxkp" path="res://status.tscn" id="4_u2nsr"]
 [ext_resource type="Script" uid="uid://dnq8ii7sc0bv7" path="res://main_camera_2.gd" id="5_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://daqf1l1d53afm" path="res://skater_player2.tscn" id="6_670s1"]
-[ext_resource type="PackedScene" uid="uid://bh1pcv7r5f1q6" path="res://status2.tscn" id="7_b5nmj"]
+[ext_resource type="PackedScene" path="res://status2.tscn" id="7_b5nmj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2nsr"]
 size = Vector2(12, 12)
@@ -23,6 +23,19 @@ normal = Vector2(1, 0)
 [node name="World2D" type="Node2D"]
 script = ExtResource("1_y4oe8")
 
+<<<<<<< HEAD
+=======
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scale = Vector2(1.565, 1.565)
+scroll_scale = Vector2(0.05, 0.05)
+scroll_offset = Vector2(-129, 137)
+
+[node name="CityBackground" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(-2.000001, -533.54626)
+scale = Vector2(5.652034, 5.652034)
+texture = ExtResource("2_u2nsr")
+
+>>>>>>> refs/remotes/origin/main
 [node name="SkaterPlayer" parent="." instance=ExtResource("2_laysq")]
 position = Vector2(-129, 1)
 
@@ -59,6 +72,7 @@ collision_mask = 2
 shape = SubResource("WorldBoundaryShape2D_u2nsr")
 
 [node name="Status" parent="Camera2D" instance=ExtResource("4_u2nsr")]
+z_index = 10
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -73,6 +87,7 @@ grow_vertical = 2
 scale = Vector2(0.2, 0.2)
 
 [node name="Status2" parent="Camera2D" instance=ExtResource("7_b5nmj")]
+z_index = 10
 offset_left = 99.999985
 offset_top = -95.0
 offset_right = 462.0
@@ -80,6 +95,7 @@ offset_bottom = -20.0
 scale = Vector2(0.2, 0.2)
 
 [node name="ProgressBar" type="ProgressBar" parent="Camera2D"]
+z_index = 10
 offset_left = -43.0
 offset_top = -98.0
 offset_right = 57.0
@@ -90,9 +106,9 @@ scale = Vector2(0.8, 0.8)
 position = Vector2(-153, -6)
 
 [node name="Win" type="Area2D" parent="."]
+position = Vector2(128, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
-position = Vector2(10000, 0)
 shape = SubResource("WorldBoundaryShape2D_b5nmj")
 
 [connection signal="area_entered" from="StageMarker" to="." method="_on_area_entered"]
