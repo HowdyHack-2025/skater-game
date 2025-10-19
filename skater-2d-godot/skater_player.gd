@@ -5,7 +5,7 @@ extends CharacterBody2D
 const ACCELERATION = 50.0
 const JUMP_VELOCITY = -200.0
 const MAX_FALL_SPEED = 200.0
-@export var max_speed = 150.0
+@export var max_speed: float = 150.0
 const AIR_SPEED = 100.0
 const GRAVITY_TIMEOUT = 1.0
 var air_time: float = 0

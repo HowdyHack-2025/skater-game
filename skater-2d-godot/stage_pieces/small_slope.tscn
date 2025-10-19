@@ -1,12 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0fvb6gfwd3ii"]
+[gd_scene load_steps=2 format=4 uid="uid://b0fvb6gfwd3ii"]
 
 [ext_resource type="PackedScene" uid="uid://byo1o208kq0gj" path="res://stage_pieces/grass_tile.tscn" id="2_sjv6c"]
 
 [node name="SmallSlope" type="Node2D"]
 
 [node name="GrassTile" parent="." instance=ExtResource("2_sjv6c")]
-position = Vector2(0, 0)
-tile_map_data = PackedByteArray(0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 10, 0, 0, 0, 2, 0, 0, 0, 1, 0, 2, 0, 10, 0, 0, 0, 3, 0, 0, 0, 1, 0, 3, 0, 10, 0, 0, 0, 4, 0, 0, 0, 1, 0, 3, 0, 7, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 11, 0, 0, 0)
+tile_map_data = PackedByteArray("AAABAAAAAQAHAAkAAAACAAAAAQACAAoAAAADAAAAAQAJAAkAAAAEAAAAAQAKAAkAAAAAAAAAAQAGAAkAAAABAAEAAQAHAAoAAAACAAEAAQAIAAoAAAADAAEAAQAJAAoAAAAEAAEAAQAFAAcAAAAAAAEAAQAFAAcAAAA=")
 
 [node name="EndMarker" type="Marker2D" parent="."]
 position = Vector2(160, 0)
