@@ -2,6 +2,7 @@ extends Node
 
 signal status_update(status: String)
 signal status_update2(status: String)
+signal behind(player: String)
 signal p1win
 signal p2win
 var winned = false

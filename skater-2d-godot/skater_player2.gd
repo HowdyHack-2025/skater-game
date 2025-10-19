@@ -26,7 +26,7 @@ var speed_boost = false
 var flips = 0
 
 var speed_boost_timer: float = 0
-var speed_boost_end: float = 2
+var speed_boost_end: float = 1.5
 
 var delay_counter = 0
 var delay_print = 5
@@ -36,7 +36,7 @@ var stored_boost = false
 # Constants
 const SNAP_LENGTH = 4.0
 const FLOOR_MAX_ANGLE = 45.0  # Max angle to consider a floor
-
+var behind = false
 # Variables
 var snap_vector: Vector2 = Vector2.DOWN * SNAP_LENGTH
 
@@ -116,16 +116,18 @@ func _physics_process(delta: float) -> void:
 
 	# if surface_normal.x < 0 or surface_normal.y == 0:
 	# 	floor_snap_length = 0
-
 	# set max and min speed
 	if max_speed < 300:
 		max_speed += delta/100
 	# set max and min speed
-	if self.position.x < SignalBus.camera_position.x - 200 or speed_boost:
+	if self.position.x < SignalBus.camera_position.x - 150:
+		SignalBus.behind.emit("p2")
+	if self.position.x < SignalBus.camera_position.x - 150 or speed_boost:
 		velocity.x = clampf(velocity.x, 10, max_speed + 300)
 	else:
 		velocity.x = clampf(velocity.x, 10, max_speed)
 		ACCELERATION = 100
+		
 	if is_on_floor():
 		rotation = rotate_toward(rotation, surface_normal.x, 0.5)
 		ACCELERATION = 50

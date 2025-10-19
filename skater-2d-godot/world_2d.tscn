@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkra1ub3o0xua"]
+[gd_scene load_steps=16 format=3 uid="uid://bkra1ub3o0xua"]
 
 [ext_resource type="Script" uid="uid://nrohe4rqb3q" path="res://world_2d.gd" id="1_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://cbhjkg5kjws57" path="res://skater_player.tscn" id="2_laysq"]
+[ext_resource type="Texture2D" uid="uid://dqxsajt8rfxsd" path="res://assets/2d/imported/GandalfHardcore City Tiles/City background.png" id="2_u2nsr"]
 [ext_resource type="PackedScene" uid="uid://cj2oe0m4q44bu" path="res://stage_pieces/beginning.tscn" id="3_hmjmd"]
 [ext_resource type="PackedScene" uid="uid://b82ppyqjrmxkp" path="res://status.tscn" id="4_u2nsr"]
 [ext_resource type="Script" uid="uid://dnq8ii7sc0bv7" path="res://main_camera_2.gd" id="5_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://daqf1l1d53afm" path="res://skater_player2.tscn" id="6_670s1"]
-[ext_resource type="PackedScene" uid="uid://bh1pcv7r5f1q6" path="res://status2.tscn" id="7_b5nmj"]
+[ext_resource type="PackedScene" path="res://status2.tscn" id="7_b5nmj"]
+[ext_resource type="Texture2D" uid="uid://c4uhr6erp8awy" path="res://assets/2d/Player Indicator.png" id="8_uxiop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2nsr"]
 size = Vector2(12, 12)
@@ -16,6 +18,33 @@ size = Vector2(12, 20)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u2nsr"]
 normal = Vector2(1, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxiop"]
+atlas = ExtResource("8_uxiop")
+region = Rect2(104, 0, 104, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31037"]
+atlas = ExtResource("8_uxiop")
+region = Rect2(104, 75, 104, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cb377"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxiop")
+}],
+"loop": false,
+"name": &"p1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31037")
+}],
+"loop": false,
+"name": &"p2",
+"speed": 5.0
+}]
 
 [node name="World2D" type="Node2D"]
 script = ExtResource("1_y4oe8")
@@ -70,6 +99,24 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.2, 0.2)
 
+[node name="RedPLayerLabel" type="Label" parent="Camera2D/Status"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = 47.5
+offset_right = 39.5
+offset_bottom = 104.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 41
+text = "RED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Status2" parent="Camera2D" instance=ExtResource("7_b5nmj")]
 z_index = 10
 offset_left = 99.999985
@@ -78,13 +125,44 @@ offset_right = 462.0
 offset_bottom = -20.0
 scale = Vector2(0.2, 0.2)
 
+[node name="BluePlayerLabel" type="Label" parent="Camera2D/Status2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = 47.499977
+offset_right = 51.5
+offset_bottom = 104.49997
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 41
+text = "BLUE"
+
 [node name="ProgressBar" type="ProgressBar" parent="Camera2D"]
 z_index = 10
-offset_left = -43.0
-offset_top = -98.0
-offset_right = 57.0
-offset_bottom = -71.0
-scale = Vector2(0.8, 0.8)
+offset_left = -46.0
+offset_top = -95.0
+offset_right = 54.0
+offset_bottom = -68.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 11
+
+[node name="behindMarker" type="AnimatedSprite2D" parent="Camera2D"]
+visible = false
+z_index = 1
+position = Vector2(-151.99998, -14)
+scale = Vector2(0.23999998, 0.23999996)
+sprite_frames = SubResource("SpriteFrames_cb377")
+animation = &"p2"
+
+[node name="background" type="Sprite2D" parent="Camera2D"]
+z_index = -2
+position = Vector2(-6.9999995, -2.9999998)
+scale = Vector2(0.5953758, 0.5953757)
+texture = ExtResource("2_u2nsr")
 
 [node name="SkaterPlayer2" parent="." instance=ExtResource("6_670s1")]
 position = Vector2(-153, -6)

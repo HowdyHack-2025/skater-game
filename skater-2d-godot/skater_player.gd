@@ -24,7 +24,7 @@ var flips = 0
 var speed_boost = false
 
 var speed_boost_timer: float = 0
-var speed_boost_end: float = 2
+var speed_boost_end: float = 1.5
 
 var slowed = false
 var delay_counter = 0
@@ -117,11 +117,14 @@ func _physics_process(delta: float) -> void:
 	if max_speed < 300:
 		max_speed += delta/100
 	# set max and min speed
-	if self.position.x < SignalBus.camera_position.x - 200 or speed_boost:
+	if self.position.x < SignalBus.camera_position.x - 150:
+		SignalBus.behind.emit("p1")
+	if self.position.x < SignalBus.camera_position.x - 150 or speed_boost:
 		velocity.x = clampf(velocity.x, 10, max_speed + 100)
 	else:
 		velocity.x = clampf(velocity.x, 10, max_speed)
 		ACCELERATION = 100
+		
 	if is_on_floor():
 		rotation = rotate_toward(rotation, surface_normal.x, 0.5)
 		ACCELERATION = 50
