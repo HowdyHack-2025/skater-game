@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		coyote_timer -= delta  # Count down when not grounded
 	
-	var direction := Input.get_action_strength("go")
+	var direction := Input.get_action_strength("go_2")
 
 	if delay_counter < 1:
 		delay_counter += delta
@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
 		#velocity.x = lerp(velocity.x, direction*AIR_SPEED, 0.1)
-		var flip_d := Input.get_axis("backflip_p1", "frontflip_p1")
+		var flip_d := Input.get_axis("backflip_p2", "frontflip_p2")
 		if abs(flip_d) == 1:
 			flipping = true
 			SignalBus.status_update.emit("flipping")

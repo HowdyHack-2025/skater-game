@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkra1ub3o0xua"]
+[gd_scene load_steps=10 format=3 uid="uid://bkra1ub3o0xua"]
 
 [ext_resource type="Script" uid="uid://nrohe4rqb3q" path="res://world_2d.gd" id="1_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://cbhjkg5kjws57" path="res://skater_player.tscn" id="2_laysq"]
 [ext_resource type="Texture2D" uid="uid://dqxsajt8rfxsd" path="res://assets/2d/imported/GandalfHardcore City Tiles/City background.png" id="2_u2nsr"]
-[ext_resource type="PackedScene" uid="uid://cj2oe0m4q44bu" path="res://stage_pieces/beginning.tscn" id="3_hmjmd"]
+[ext_resource type="PackedScene" path="res://stage_pieces/beginning.tscn" id="3_hmjmd"]
 [ext_resource type="Script" uid="uid://dnq8ii7sc0bv7" path="res://main_camera_2.gd" id="5_y4oe8"]
+[ext_resource type="PackedScene" uid="uid://daqf1l1d53afm" path="res://skater_player2.tscn" id="6_670s1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2nsr"]
 size = Vector2(12, 12)
@@ -63,5 +64,8 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
 shape = SubResource("WorldBoundaryShape2D_u2nsr")
+
+[node name="SkaterPlayer2" parent="." instance=ExtResource("6_670s1")]
+position = Vector2(-153, -6)
 
 [connection signal="area_entered" from="StageMarker" to="." method="_on_area_entered"]

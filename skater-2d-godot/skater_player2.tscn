@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbhjkg5kjws57"]
+[gd_scene load_steps=8 format=3 uid="uid://daqf1l1d53afm"]
 
-[ext_resource type="Script" uid="uid://c1gxk1nwk71x8" path="res://skater_player.gd" id="1_3xnyc"]
-[ext_resource type="Texture2D" uid="uid://c8g40ehgcjuhf" path="res://assets/skater_placeholder.png" id="1_ug1ln"]
+[ext_resource type="Script" uid="uid://ixpmp5uturqn" path="res://skater_player2.gd" id="1_wste2"]
+[ext_resource type="Texture2D" uid="uid://c8g40ehgcjuhf" path="res://assets/skater_placeholder.png" id="2_qhx4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ug1ln"]
 size = Vector2(12, 2)
@@ -46,11 +46,12 @@ _data = {
 }
 
 [node name="SkaterPlayer" type="CharacterBody2D"]
+collision_layer = 2
 floor_max_angle = 1.3089969
-script = ExtResource("1_3xnyc")
+script = ExtResource("1_wste2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ug1ln")
+texture = ExtResource("2_qhx4m")
 
 [node name="SkateboardCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
