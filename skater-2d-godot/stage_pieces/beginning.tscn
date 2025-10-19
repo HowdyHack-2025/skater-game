@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=4 uid="uid://cj2oe0m4q44bu"]
+
+[ext_resource type="PackedScene" uid="uid://byo1o208kq0gj" path="res://stage_pieces/grass_tile.tscn" id="1_8qk3o"]
+
+[node name="Beginning" type="Node2D"]
+
+[node name="GrassTile" parent="." instance=ExtResource("1_8qk3o")]
+position = Vector2(0, 0)
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQABAAAAAAACAAAAAQABAAAAAAADAAAAAQABAAAAAAAEAAAAAQABAAAAAAAFAAAAAQABAAAAAAAGAAAAAQABAAAAAAAHAAAAAQABAAAAAAAIAAAAAQABAAAAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAA=")
+
+[node name="EndMarker" type="Marker2D" parent="."]
+position = Vector2(288, 0)
