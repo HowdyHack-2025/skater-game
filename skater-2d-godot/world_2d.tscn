@@ -11,6 +11,9 @@ size = Vector2(12, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4oe8"]
 size = Vector2(12, 20)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y4oe8"]
+normal = Vector2(1, 0)
+
 [node name="World2D" type="Node2D"]
 script = ExtResource("1_y4oe8")
 
@@ -44,5 +47,19 @@ shape = SubResource("RectangleShape2D_y4oe8")
 
 [node name="Beginning" parent="." instance=ExtResource("3_hmjmd")]
 position = Vector2(-180, 12)
+
+[node name="MainCamera2" type="Camera2D" parent="."]
+position = Vector2(-129, -13)
+zoom = Vector2(5.465, 5.465)
+position_smoothing_enabled = true
+script = ExtResource("4_y4oe8")
+
+[node name="Area2D" type="Area2D" parent="MainCamera2"]
+position = Vector2(154, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainCamera2/Area2D"]
+shape = SubResource("WorldBoundaryShape2D_y4oe8")
 
 [connection signal="area_entered" from="StageMarker" to="." method="_on_area_entered"]
