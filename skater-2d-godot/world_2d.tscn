@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkra1ub3o0xua"]
+[gd_scene load_steps=13 format=3 uid="uid://bkra1ub3o0xua"]
 
 [ext_resource type="Script" uid="uid://nrohe4rqb3q" path="res://world_2d.gd" id="1_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://cbhjkg5kjws57" path="res://skater_player.tscn" id="2_laysq"]
 [ext_resource type="Texture2D" uid="uid://dqxsajt8rfxsd" path="res://assets/2d/imported/GandalfHardcore City Tiles/City background.png" id="2_u2nsr"]
 [ext_resource type="PackedScene" uid="uid://cj2oe0m4q44bu" path="res://stage_pieces/beginning.tscn" id="3_hmjmd"]
+[ext_resource type="PackedScene" uid="uid://b82ppyqjrmxkp" path="res://status.tscn" id="4_u2nsr"]
 [ext_resource type="Script" uid="uid://dnq8ii7sc0bv7" path="res://main_camera_2.gd" id="5_y4oe8"]
-[ext_resource type="PackedScene" path="res://skater_player2.tscn" id="6_670s1"]
+[ext_resource type="PackedScene" uid="uid://daqf1l1d53afm" path="res://skater_player2.tscn" id="6_670s1"]
+[ext_resource type="PackedScene" uid="uid://bh1pcv7r5f1q6" path="res://status2.tscn" id="7_b5nmj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2nsr"]
 size = Vector2(12, 12)
@@ -14,6 +16,9 @@ size = Vector2(12, 12)
 size = Vector2(12, 20)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u2nsr"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5nmj"]
 normal = Vector2(1, 0)
 
 [node name="World2D" type="Node2D"]
@@ -54,7 +59,6 @@ position = Vector2(-180, 12)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-129, 0)
 zoom = Vector2(5.4, 5.4)
-position_smoothing_enabled = true
 script = ExtResource("5_y4oe8")
 
 [node name="Area2D" type="Area2D" parent="Camera2D"]
@@ -65,7 +69,41 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
 shape = SubResource("WorldBoundaryShape2D_u2nsr")
 
+[node name="Status" parent="Camera2D" instance=ExtResource("4_u2nsr")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -91.0
+offset_right = 192.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+
+[node name="Status2" parent="Camera2D" instance=ExtResource("7_b5nmj")]
+offset_left = 99.999985
+offset_top = -95.0
+offset_right = 462.0
+offset_bottom = -20.0
+scale = Vector2(0.2, 0.2)
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera2D"]
+offset_left = -43.0
+offset_top = -98.0
+offset_right = 57.0
+offset_bottom = -71.0
+scale = Vector2(0.8, 0.8)
+
 [node name="SkaterPlayer2" parent="." instance=ExtResource("6_670s1")]
 position = Vector2(-153, -6)
+
+[node name="Win" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Win"]
+position = Vector2(10000, 0)
+shape = SubResource("WorldBoundaryShape2D_b5nmj")
 
 [connection signal="area_entered" from="StageMarker" to="." method="_on_area_entered"]

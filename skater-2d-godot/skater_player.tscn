@@ -70,7 +70,7 @@ libraries = {
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 1)
-target_position = Vector2(0, 9)
+target_position = Vector2(0, 11)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
