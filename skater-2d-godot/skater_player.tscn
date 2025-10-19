@@ -46,6 +46,7 @@ _data = {
 }
 
 [node name="SkaterPlayer" type="CharacterBody2D"]
+collision_layer = 2
 floor_max_angle = 1.3089969
 script = ExtResource("1_3xnyc")
 
