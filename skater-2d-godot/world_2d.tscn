@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b82ppyqjrmxkp" path="res://status.tscn" id="4_u2nsr"]
 [ext_resource type="Script" uid="uid://dnq8ii7sc0bv7" path="res://main_camera_2.gd" id="5_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://daqf1l1d53afm" path="res://skater_player2.tscn" id="6_670s1"]
-[ext_resource type="PackedScene" path="res://status2.tscn" id="7_b5nmj"]
+[ext_resource type="PackedScene" uid="uid://bh1pcv7r5f1q6" path="res://status2.tscn" id="7_b5nmj"]
 [ext_resource type="Texture2D" uid="uid://c4uhr6erp8awy" path="res://assets/2d/Player Indicator.png" id="8_uxiop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2nsr"]
@@ -164,7 +164,76 @@ position = Vector2(-6.9999995, -2.9999998)
 scale = Vector2(0.5953758, 0.5953757)
 texture = ExtResource("2_u2nsr")
 
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+unique_name_in_owner = true
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.00002
+offset_top = -99.000015
+offset_right = 1823.0
+offset_bottom = 1001.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.18, 0.18)
+color = Color(0.25882354, 0.08627451, 0.015686275, 0.8666667)
+
+[node name="Label" type="Label" parent="Camera2D/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.5
+offset_top = -382.0
+offset_right = 232.5
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 96
+text = "SkateCam"
+
+[node name="Label2" type="Label" parent="Camera2D/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.00006
+offset_top = -78.00003
+offset_right = 362.00006
+offset_bottom = 78.00003
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Flat palm to GO
+Backflip or frontflip by twisting your palm
+Fist to stop accelerating"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Camera2D/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.77777
+offset_top = 166.66675
+offset_right = 166.22217
+offset_bottom = 306.66675
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 96
+text = "START"
+
 [node name="SkaterPlayer2" parent="." instance=ExtResource("6_670s1")]
 position = Vector2(-153, -6)
 
 [connection signal="area_entered" from="StageMarker" to="." method="_on_area_entered"]
+[connection signal="pressed" from="Camera2D/ColorRect/Button" to="." method="_on_button_pressed"]

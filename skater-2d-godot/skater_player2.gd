@@ -122,11 +122,12 @@ func _physics_process(delta: float) -> void:
 	if self.position.x < SignalBus.camera_position.x - 150:
 		SignalBus.behind.emit("p2")
 	if self.position.x < SignalBus.camera_position.x - 150 or speed_boost:
-		velocity.x = clampf(velocity.x, 10, max_speed + 300)
+		velocity.x = clampf(velocity.x, 0, max_speed + 300)
 	else:
-		velocity.x = clampf(velocity.x, 10, max_speed)
+		velocity.x = clampf(velocity.x, 0, max_speed)
 		ACCELERATION = 100
-		
+	if not SignalBus.started:
+		velocity.x = clampf(velocity.x, 0, 0)
 	if is_on_floor():
 		rotation = rotate_toward(rotation, surface_normal.x, 0.5)
 		ACCELERATION = 50
