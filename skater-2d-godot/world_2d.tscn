@@ -23,19 +23,6 @@ normal = Vector2(1, 0)
 [node name="World2D" type="Node2D"]
 script = ExtResource("1_y4oe8")
 
-<<<<<<< HEAD
-=======
-[node name="Parallax2D" type="Parallax2D" parent="."]
-scale = Vector2(1.565, 1.565)
-scroll_scale = Vector2(0.05, 0.05)
-scroll_offset = Vector2(-129, 137)
-
-[node name="CityBackground" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(-2.000001, -533.54626)
-scale = Vector2(5.652034, 5.652034)
-texture = ExtResource("2_u2nsr")
-
->>>>>>> refs/remotes/origin/main
 [node name="SkaterPlayer" parent="." instance=ExtResource("2_laysq")]
 position = Vector2(-129, 1)
 
