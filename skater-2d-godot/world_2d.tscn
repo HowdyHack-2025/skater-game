@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkra1ub3o0xua"]
+[gd_scene load_steps=17 format=3 uid="uid://bkra1ub3o0xua"]
 
 [ext_resource type="Script" uid="uid://nrohe4rqb3q" path="res://world_2d.gd" id="1_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://cbhjkg5kjws57" path="res://skater_player.tscn" id="2_laysq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dnq8ii7sc0bv7" path="res://main_camera_2.gd" id="5_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://daqf1l1d53afm" path="res://skater_player2.tscn" id="6_670s1"]
 [ext_resource type="PackedScene" path="res://status2.tscn" id="7_b5nmj"]
+[ext_resource type="Texture2D" uid="uid://c4uhr6erp8awy" path="res://assets/2d/Player Indicator.png" id="8_uxiop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2nsr"]
 size = Vector2(12, 12)
@@ -17,6 +18,33 @@ size = Vector2(12, 20)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u2nsr"]
 normal = Vector2(1, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxiop"]
+atlas = ExtResource("8_uxiop")
+region = Rect2(104, 0, 104, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31037"]
+atlas = ExtResource("8_uxiop")
+region = Rect2(104, 75, 104, 75)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cb377"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxiop")
+}],
+"loop": false,
+"name": &"p1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31037")
+}],
+"loop": false,
+"name": &"p2",
+"speed": 5.0
+}]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5nmj"]
 normal = Vector2(1, 0)
@@ -99,6 +127,13 @@ offset_top = -98.0
 offset_right = 57.0
 offset_bottom = -71.0
 scale = Vector2(0.8, 0.8)
+
+[node name="behindMarker" type="AnimatedSprite2D" parent="Camera2D"]
+z_index = 1
+position = Vector2(-151.99998, -14)
+scale = Vector2(0.23999998, 0.23999996)
+sprite_frames = SubResource("SpriteFrames_cb377")
+animation = &"p2"
 
 [node name="SkaterPlayer2" parent="." instance=ExtResource("6_670s1")]
 position = Vector2(-153, -6)
