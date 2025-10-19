@@ -51,12 +51,6 @@ func _physics_process(delta: float) -> void:
 		coyote_timer -= delta  # Count down when not grounded
 	
 	var direction := Input.get_action_strength("go")
-
-	if delay_counter < 1:
-		delay_counter += delta
-	else:
-		print(velocity)
-		delay_counter = 0
 	
 	if not is_on_floor():
 		#velocity.x = lerp(velocity.x, direction*AIR_SPEED, 0.1)
@@ -66,7 +60,7 @@ func _physics_process(delta: float) -> void:
 			SignalBus.status_update.emit("flipping")
 		else:
 			flipping = false
-			SignalBus.status_update.emit("none")
+			
 		rotation += flip_d * 0.1
 		player_degree += rotation - last_degree
 		if abs(player_degree) >= ending_degree:
@@ -90,6 +84,7 @@ func _physics_process(delta: float) -> void:
 		velocity += tangent * direction * ACCELERATION * delta
 	else:
 		velocity.x = move_toward(velocity.x, 0, ACCELERATION/100)
+		SignalBus.status_update.emit("none")
 
 	# if surface_normal.x < 0 or surface_normal.y == 0:
 	# 	floor_snap_length = 0
