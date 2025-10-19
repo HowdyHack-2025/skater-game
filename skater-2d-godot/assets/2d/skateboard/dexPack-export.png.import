@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2rgi04tgimh8"
-path="res://.godot/imported/Floor tiles 32x32-export.png-2e7c3ecbf98adf8d7475628367b1ac0a.ctex"
+uid="uid://dbjpdunt7trdq"
+path="res://.godot/imported/dexPack-export.png-77bc4d86c0633b2d09fef7c9be091300.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2d/Floor tiles 32x32-export.png"
-dest_files=["res://.godot/imported/Floor tiles 32x32-export.png-2e7c3ecbf98adf8d7475628367b1ac0a.ctex"]
+source_file="res://assets/2d/skateboard/dexPack-export.png"
+dest_files=["res://.godot/imported/dexPack-export.png-77bc4d86c0633b2d09fef7c9be091300.ctex"]
 
 [params]
 

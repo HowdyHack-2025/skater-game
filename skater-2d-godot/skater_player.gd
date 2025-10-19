@@ -33,13 +33,17 @@ var delay_print = 0.5
 # Constants
 const SNAP_LENGTH = 4.0
 const FLOOR_MAX_ANGLE = 45.0  # Max angle to consider a floor
-
+var stored_boost = false
 # Variables
 var snap_vector: Vector2 = Vector2.DOWN * SNAP_LENGTH
 
 @onready var timer: Timer = $Timer
 
 @onready var cast: RayCast2D = $RayCast2D
+
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
+
+
 
 func _ready() -> void:
 	floor_stop_on_slope = false
@@ -50,6 +54,11 @@ func _physics_process(delta: float) -> void:
 	
 	# Coyote time logic
 	if is_grounded:
+		if stored_boost:
+			speed_boost = true
+			sprite_2d.play("boosted")
+			velocity.x += ACCELERATION
+			stored_boost = false
 		coyote_timer = COYOTE_TIME  # Reset when grounded
 	else:
 		coyote_timer -= delta  # Count down when not grounded
@@ -61,6 +70,7 @@ func _physics_process(delta: float) -> void:
 	if speed_boost_timer > speed_boost_end:
 		speed_boost_timer = 0
 		speed_boost = false
+		sprite_2d.play("default")
 	if not is_on_floor():
 		#velocity.x = lerp(velocity.x, direction*AIR_SPEED, 0.1)
 		var flip_d := Input.get_axis("backflip_p1", "frontflip_p1")
@@ -75,8 +85,7 @@ func _physics_process(delta: float) -> void:
 		if abs(player_degree) >= ending_degree:
 			player_degree = 0
 			flips += 1
-			speed_boost = true
-			velocity.x += ACCELERATION
+			stored_boost = true
 		if coyote_timer <= 0.0:
 			velocity += get_gravity() * delta * 0.25
 	

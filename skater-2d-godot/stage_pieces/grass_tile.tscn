@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://byo1o208kq0gj"]
 
-[ext_resource type="Texture2D" uid="uid://jjcq4wfdmcjs" path="res://assets/2d/Floor tiles 32x32.png" id="2_l4ccr"]
+[ext_resource type="Texture2D" uid="uid://jjcq4wfdmcjs" path="res://assets/2d/imported/GandalfHardcore City Tiles/Floor tiles 32x32.png" id="2_l4ccr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rnum"]
 texture = ExtResource("2_l4ccr")
