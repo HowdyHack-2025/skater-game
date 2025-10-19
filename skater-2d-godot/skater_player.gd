@@ -29,6 +29,7 @@ var snap_vector: Vector2 = Vector2.DOWN * SNAP_LENGTH
 
 func _ready() -> void:
 	floor_stop_on_slope = false
+	floor_snap_length = 4
 
 func _physics_process(delta: float) -> void:
 	var is_grounded := is_on_floor()
