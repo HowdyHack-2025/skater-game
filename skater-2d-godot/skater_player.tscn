@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbhjkg5kjws57"]
+[gd_scene load_steps=10 format=3 uid="uid://cbhjkg5kjws57"]
 
 [ext_resource type="Script" uid="uid://c1gxk1nwk71x8" path="res://skater_player.gd" id="1_3xnyc"]
 [ext_resource type="Texture2D" uid="uid://c8g40ehgcjuhf" path="res://assets/skater_placeholder.png" id="1_ug1ln"]
+[ext_resource type="PackedScene" uid="uid://b82ppyqjrmxkp" path="res://status.tscn" id="3_kb5fk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ug1ln"]
 size = Vector2(12, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kb5fk"]
-size = Vector2(8, 9)
+size = Vector2(3, 1.375)
 
 [sub_resource type="Animation" id="Animation_kb5fk"]
 length = 0.001
@@ -45,8 +46,8 @@ _data = {
 &"backflip": SubResource("Animation_ug1ln")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fgln"]
-size = Vector2(12, 396)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kb5fk"]
+normal = Vector2(1, 0)
 
 [node name="SkaterPlayer" type="CharacterBody2D"]
 script = ExtResource("1_3xnyc")
@@ -59,10 +60,9 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ug1ln")
 
 [node name="PlayerArea" type="Area2D" parent="."]
-position = Vector2(1, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
-position = Vector2(-1, -6.5)
+position = Vector2(0, -3.6875)
 shape = SubResource("RectangleShape2D_kb5fk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -80,4 +80,22 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainCamera/Area2D"]
-shape = SubResource("RectangleShape2D_3fgln")
+shape = SubResource("WorldBoundaryShape2D_kb5fk")
+
+[node name="Status" parent="MainCamera" instance=ExtResource("3_kb5fk")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -60.0
+offset_right = -13.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 11)
+
+[connection signal="body_entered" from="PlayerArea" to="." method="_on_player_area_body_entered"]
