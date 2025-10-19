@@ -23,12 +23,6 @@ func _process(_delta: float) -> void:
 		position = player2.position
 		
 func _on_behind(player: String):
-	match player:
-		"p1":
-			behind_marker.play("p1")
-			behind_marker.show()
-		"p2":
-			behind_marker.play("p2")
-			behind_marker.show()
-		"none":
-			behind_marker.hide()
+	pass
+		
+		

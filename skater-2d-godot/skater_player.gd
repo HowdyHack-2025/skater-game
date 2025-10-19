@@ -116,13 +116,14 @@ func _physics_process(delta: float) -> void:
 	if max_speed < 300:
 		max_speed += delta/100
 	# set max and min speed
+	if self.position.x < SignalBus.camera_position.x - 150:
+		SignalBus.behind.emit("p1")
 	if self.position.x < SignalBus.camera_position.x - 150 or speed_boost:
 		velocity.x = clampf(velocity.x, 10, max_speed + 100)
-		SignalBus.behind.emit("p1")
 	else:
 		velocity.x = clampf(velocity.x, 10, max_speed)
 		ACCELERATION = 100
-		SignalBus.behind.emit("none")
+		
 	if is_on_floor():
 		rotation = rotate_toward(rotation, surface_normal.x, 0.5)
 		ACCELERATION = 50
