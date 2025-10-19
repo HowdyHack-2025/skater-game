@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://nrohe4rqb3q" path="res://world_2d.gd" id="1_y4oe8"]
 [ext_resource type="PackedScene" uid="uid://cbhjkg5kjws57" path="res://skater_player.tscn" id="2_laysq"]
 [ext_resource type="Texture2D" uid="uid://dqxsajt8rfxsd" path="res://assets/2d/imported/GandalfHardcore City Tiles/City background.png" id="2_u2nsr"]
-[ext_resource type="PackedScene" path="res://stage_pieces/beginning.tscn" id="3_hmjmd"]
+[ext_resource type="PackedScene" uid="uid://cj2oe0m4q44bu" path="res://stage_pieces/beginning.tscn" id="3_hmjmd"]
 [ext_resource type="Script" uid="uid://dnq8ii7sc0bv7" path="res://main_camera_2.gd" id="5_y4oe8"]
-[ext_resource type="PackedScene" uid="uid://daqf1l1d53afm" path="res://skater_player2.tscn" id="6_670s1"]
+[ext_resource type="PackedScene" path="res://skater_player2.tscn" id="6_670s1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u2nsr"]
 size = Vector2(12, 12)
@@ -21,12 +21,12 @@ script = ExtResource("1_y4oe8")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scale = Vector2(1.565, 1.565)
-scroll_scale = Vector2(0.1, 0.1)
+scroll_scale = Vector2(0.05, 0.05)
 scroll_offset = Vector2(-129, 137)
 
 [node name="CityBackground" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(-2.000001, 4.0000005)
-scale = Vector2(1.7283236, 1.7283236)
+position = Vector2(-2.000001, -533.54626)
+scale = Vector2(5.652034, 5.652034)
 texture = ExtResource("2_u2nsr")
 
 [node name="SkaterPlayer" parent="." instance=ExtResource("2_laysq")]
