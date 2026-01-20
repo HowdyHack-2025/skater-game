@@ -1,6 +1,8 @@
 # SkateCam
 2d 1v1 skater game made for the 2025 tamu howdyhack
 
+how did this win first place bro
+
 ### controls:
 p1:
 w go
